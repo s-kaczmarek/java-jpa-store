@@ -18,9 +18,12 @@ public enum ProductCategory {
         return shortName;
     }
 
+    /**
+     * @param shortName
+     * Konstruktor enuma ustawia skróconą nazwę w polu shortName
+     */
     ProductCategory(String shortName){
         this.shortName = shortName;
-        System.out.println("#### " + this.shortName);
     }
 
     public static List<String> getShortNames(){
@@ -29,7 +32,6 @@ public enum ProductCategory {
 
     static{
         shortNames = new ArrayList<>();
-        System.out.println("jestem w staticu");
         EnumSet<ProductCategory> productCategories = EnumSet.allOf(ProductCategory.class);
         for(ProductCategory pc : productCategories){
             shortNames.add(pc.getShortName());

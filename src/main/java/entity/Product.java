@@ -3,6 +3,9 @@ package entity;
 import com.sun.istack.NotNull;
 import entity.commons.ProductCategory;
 import entity.commons.ProductStatus;
+import service.IdentifierService;
+import service.WrongRangeException;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -35,7 +38,7 @@ public class Product {
 
     public static final class Builder {
 
-        private String identifier;
+//        private String identifier;
         private String label;
         private LocalDate launchDate;
         private LocalDate withdrawalDate;
@@ -44,10 +47,10 @@ public class Product {
         private ProductStatus status;
         private ProductCategory category;
 
-        public Builder identifier(String identifier){
-            this.identifier = identifier;
-            return this;
-        }
+//        public Builder identifier(String identifier){
+//            this.identifier = identifier;
+//            return this;
+//        }
 
         public Builder label(String label){
             this.label = label;
@@ -84,9 +87,9 @@ public class Product {
             return this;
         }
 
-        public Product build(){
+        public Product build() throws WrongRangeException {
             Product product = new Product();
-            product.setIdentifier(this.identifier);
+            product.setIdentifier(IdentifierService.generateIdentifier(this.category));
             product.setLabel(this.label);
             product.setLaunchDate(this.launchDate);
             product.setWithdrawalDate(this.withdrawalDate);

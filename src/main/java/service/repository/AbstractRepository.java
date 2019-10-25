@@ -14,6 +14,7 @@ public abstract class AbstractRepository<T, U> {
 
     @SuppressWarnings("unchecked") // For the cast on Class<E>.
     public AbstractRepository() {
+        // U jest klasą persystowaną i jest wykozystywana do wykonywania operacji CRUD. Blok kodu poniżej pozwala uzustakć typ klasy, do przekazania w metodach
         Type type = getClass().getGenericSuperclass();
 
         while (!(type instanceof ParameterizedType) || ((ParameterizedType) type).getRawType() != AbstractRepository.class) {
@@ -31,9 +32,9 @@ public abstract class AbstractRepository<T, U> {
         HibernateUtils.persistObject(object);
     }
 
-    public List readAllObjects(U entity){
+    public List readAllObjects(){
 
-        String query = String.format("SELECT e FROM %e e", entity.getClass().getName());
+        String query = String.format("SELECT e FROM %e e", type.getClass().getName());
         return HibernateUtils.entityManager.createQuery(query).getResultList();
     }
 
