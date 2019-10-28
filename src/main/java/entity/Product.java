@@ -102,6 +102,21 @@ public class Product {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", identifier='" + identifier + '\'' +
+                ", label='" + label + '\'' +
+                ", launchDate=" + launchDate +
+                ", withdrawalDate=" + withdrawalDate +
+                ", prices=" + prices +
+                ", sales=" + sales +
+                ", status=" + status +
+                ", category=" + category +
+                '}';
+    }
+
     public Long getId() {
         return id;
     }

@@ -32,7 +32,7 @@ public abstract class AbstractRepository<T, U> {
         HibernateUtils.persistObject(object);
     }
 
-    public List readAllObjects(){
+    public List<U> readAllObjects(){
 
         String query = String.format("SELECT e FROM %e e", type.getClass().getName());
         return HibernateUtils.entityManager.createQuery(query).getResultList();

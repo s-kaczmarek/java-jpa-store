@@ -1,12 +1,17 @@
 package service;
 
 import entity.Product;
-import service.repository.ProductRepository;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class MenuService {
+
+    private static ProductFacadeService productFacadeService;
+
+    static{
+        productFacadeService = ProductFacadeService.getInstance();
+    }
 
     private static String generateMenuHeader(String headerName){
         int headerLength = headerName.length();
@@ -41,7 +46,8 @@ public class MenuService {
         System.out.println("1. View all products");
         System.out.println("2. Add new product");
         System.out.println("3. Assign price to product");
-        System.out.println("4. Exit");
+        System.out.println("4. Delete product");
+        System.out.println("5. Exit");
     }
 
     // TODO
@@ -60,18 +66,23 @@ public class MenuService {
         do{
             userChoice = sc.nextInt();
             switch(userChoice){
-                case 1:
+                case 1: // View all products
+                    List<Product> products = productFacadeService.readAllProducts();
+                    for(int i = 0; i < products.size(); i++){
+                        System.out.println(i + ". " + products.get(i));
+                    }
                     break;
-                case 2:
+                case 2: // Add new product
                     break;
-                case 3:
+                case 3: // Assign price to product
                     break;
-                case 4:
+                case 4: // Delete product
+                    break;
+                case 5: // Exit
                     break;
             }
-
-        }while(userChoice >= 1 && userChoice <= 4);
-
+            sc.close();
+        }while(userChoice >= 1 && userChoice <= 5);
     }
 
     public static void serveStuffChoice(){
@@ -81,9 +92,12 @@ public class MenuService {
         do{
             userChoice = sc.nextInt();
             switch(userChoice){
-                case 1:
-                    MenuService.printAllProducts();
-                    break;
+                // TODO nie działa
+                case 1: // View all products
+                    List<Product> products = productFacadeService.readAllProducts();
+                    for(int i = 0; i < products.size(); i++){
+                        System.out.println(i + ". " + products.get(i));
+                    }
                 case 2:
                     break;
                 case 3:
@@ -91,7 +105,7 @@ public class MenuService {
                 case 4:
                     break;
             }
-
+            sc.close();
         }while(userChoice >= 1 && userChoice <= 4);
 
     }
