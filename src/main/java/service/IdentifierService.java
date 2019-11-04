@@ -1,12 +1,11 @@
 package service;
 
 import entity.commons.ProductCategory;
-
-import java.util.Random;
+import service.exception.WrongRangeException;
 
 public class IdentifierService {
 
-    public static String generateIdentifier(ProductCategory productCategory) throws WrongRangeException{
+    public static String generateIdentifier(ProductCategory productCategory) throws WrongRangeException {
 
         int number = RandomService.generateIntBetween(1,99);
         StringBuilder sb = new StringBuilder();

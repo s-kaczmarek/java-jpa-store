@@ -1,6 +1,7 @@
 package service;
 
 import entity.Product;
+import service.facade.ProductFacadeService;
 
 import java.util.List;
 import java.util.Scanner;

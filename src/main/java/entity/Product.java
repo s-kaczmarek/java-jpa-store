@@ -4,7 +4,7 @@ import com.sun.istack.NotNull;
 import entity.commons.ProductCategory;
 import entity.commons.ProductStatus;
 import service.IdentifierService;
-import service.WrongRangeException;
+import service.exception.WrongRangeException;
 
 import javax.persistence.*;
 import java.time.LocalDate;

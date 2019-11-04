@@ -7,9 +7,10 @@ public class App {
     public static void main(String[] args){
 
         boolean run = true;
+        Scanner sc = new Scanner(System.in);
         do {
             MenuService.printMainMenu();
-            Scanner sc = new Scanner(System.in);
+
             int userChoice = sc.nextInt();
             switch(userChoice){
                 case 1:
@@ -24,7 +25,8 @@ public class App {
                     throw new IllegalArgumentException("Unexpected value: " + userChoice);
             }
 
-        }while(run);
 
+        }while(run);
+        sc.close();
     }
 }

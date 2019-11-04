@@ -1,10 +1,9 @@
 package service;
 
-import entity.Product;
 import entity.commons.ProductCategory;
 import org.junit.Assert;
 import org.junit.Test;
-import utils.TestUtils;
+import service.exception.WrongRangeException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

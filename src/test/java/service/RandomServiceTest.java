@@ -2,6 +2,7 @@ package service;
 
 import org.junit.Assert;
 import org.junit.Test;
+import service.exception.WrongRangeException;
 
 public class RandomServiceTest {
 

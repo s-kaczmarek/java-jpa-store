@@ -1,5 +1,7 @@
 package service;
 
+import service.exception.WrongRangeException;
+
 import java.util.Random;
 
 public class RandomService {
@@ -16,7 +18,7 @@ public class RandomService {
      * @param to - jest górną granicą przedziału
      * @return - zwraca int
      */
-    public static int generateIntBetween(int from, int to) throws WrongRangeException{
+    public static int generateIntBetween(int from, int to) throws WrongRangeException {
         if(from < to){
             // Math.abs daje nam wartość bezwzględną
             return from + Math.abs(r.nextInt()) % (to + 1 - from);

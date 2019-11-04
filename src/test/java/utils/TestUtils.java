@@ -5,7 +5,7 @@ import entity.Product;
 import entity.Sale;
 import entity.commons.ProductCategory;
 import entity.commons.ProductStatus;
-import service.WrongRangeException;
+import service.exception.WrongRangeException;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

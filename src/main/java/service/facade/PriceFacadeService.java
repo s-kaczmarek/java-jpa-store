@@ -1,4 +1,4 @@
-package service;
+package service.facade;
 
 import entity.Price;
 import service.repository.PriceRepository;
@@ -7,10 +7,18 @@ import java.util.List;
 
 public class PriceFacadeService {
 
+    private static PriceFacadeService instance;
     private PriceRepository priceRepository;
 
+    public static PriceFacadeService getInstance(){
+        if(instance == null){
+            instance = new PriceFacadeService();
+        }
+        return instance;
+    }
+
     public PriceFacadeService() {
-        this.priceRepository = new PriceRepository();
+        this.priceRepository = PriceRepository.getInstance();
     }
 
     public void persistObject(Price price){
