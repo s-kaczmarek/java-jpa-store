@@ -19,4 +19,10 @@ public class ProductRepository extends AbstractRepository<Long, Product> {
     public ProductRepository(){
         super();
     }
+
+    @Override
+    public List<Product> readAllObjects() {
+        String query = String.format("SELECT e FROM Product e");
+        return HibernateUtils.entityManager.createQuery(query).getResultList();
+    }
 }

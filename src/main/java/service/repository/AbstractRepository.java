@@ -1,5 +1,6 @@
 package service.repository;
 
+import entity.Product;
 import utils.HibernateUtils;
 
 import java.lang.reflect.ParameterizedType;
@@ -32,11 +33,7 @@ public abstract class AbstractRepository<T, U> {
         HibernateUtils.persistObject(object);
     }
 
-    public List<U> readAllObjects(){
-
-        String query = String.format("SELECT e FROM %e e", type.getClass().getName());
-        return HibernateUtils.entityManager.createQuery(query).getResultList();
-    }
+    public abstract List<U> readAllObjects();
 
     public Object readObjectById(T id){
         Class<U> entityClass;

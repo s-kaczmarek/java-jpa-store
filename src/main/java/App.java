@@ -1,4 +1,8 @@
-import service.MenuService;
+import service.menu.logic.StuffMenuLogicService;
+import service.menu.view.ClientMenuViewService;
+import service.menu.view.MainMenuViewService;
+import service.menu.view.StuffMenuViewService;
+import utils.ScannerUtils;
 
 import java.util.Scanner;
 
@@ -6,27 +10,28 @@ public class App {
 
     public static void main(String[] args){
 
-        boolean run = true;
-        Scanner sc = new Scanner(System.in);
+        boolean isProgramRunning = true;
+        Scanner sc = ScannerUtils.getScanner();
         do {
-            MenuService.printMainMenu();
+            MainMenuViewService.printMainMenu();
 
             int userChoice = sc.nextInt();
+
             switch(userChoice){
                 case 1:
-                    MenuService.printClientMenu();
-                    MenuService.serveClientChoice();
+                    ClientMenuViewService.printClientMenu();
+                    ClientMenuViewService.serveClientChoice();
+                    break;
                 case 2:
-                    MenuService.printStuffMenu();
-                    MenuService.serveStuffChoice();
+                    StuffMenuViewService.printStuffMenu();
+                    StuffMenuLogicService.serveStuffChoice();
+                    break;
                 case 3:
-                    run = false;
+                    isProgramRunning = false;
+                    break;
                 default:
                     throw new IllegalArgumentException("Unexpected value: " + userChoice);
             }
-
-
-        }while(run);
-        sc.close();
+        }while(isProgramRunning);
     }
 }
