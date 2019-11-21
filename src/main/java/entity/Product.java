@@ -3,11 +3,16 @@ package entity;
 import com.sun.istack.NotNull;
 import entity.commons.ProductCategory;
 import entity.commons.ProductStatus;
+import entity.dto.ProductDTO;
 import service.IdentifierService;
+import service.exception.ProductNotCompleteException;
 import service.exception.WrongRangeException;
+import service.repository.PriceRepository;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -38,7 +43,6 @@ public class Product {
 
     public static final class Builder {
 
-//        private String identifier;
         private String label;
         private LocalDate launchDate;
         private LocalDate withdrawalDate;
@@ -46,11 +50,6 @@ public class Product {
         private List<Sale> sales;
         private ProductStatus status;
         private ProductCategory category;
-
-//        public Builder identifier(String identifier){
-//            this.identifier = identifier;
-//            return this;
-//        }
 
         public Builder label(String label){
             this.label = label;
@@ -91,7 +90,11 @@ public class Product {
             Product product = new Product();
             product.setIdentifier(IdentifierService.generateIdentifier(this.category));
             product.setLabel(this.label);
-            product.setLaunchDate(this.launchDate);
+            if(this.status.equals(ProductStatus.ACTIVE)){
+                product.setLaunchDate(LocalDate.now());
+            }else{
+                product.setLaunchDate(this.launchDate);
+            }
             product.setWithdrawalDate(this.withdrawalDate);
             product.setPrices(this.prices);
             product.setSales(this.sales);
@@ -100,6 +103,27 @@ public class Product {
 
             return product;
         }
+    }
+
+    public static Product mapFromDTO(ProductDTO productDTO) throws WrongRangeException, ProductNotCompleteException {
+        PriceRepository priceRepository = PriceRepository.getInstance();
+        if(productDTO.isNotValid()){
+            throw new ProductNotCompleteException("One or more of the fields is empty!");
+        }
+        Price price = new Price();
+        price.setPrice(productDTO.getPrice());
+        priceRepository.persistObject(price);
+        List<Price> prices = new ArrayList<>();
+        prices.add(price);
+
+        Product product = new Builder()
+                .label(productDTO.getLabel())
+                .prices(prices)
+                .status(productDTO.getStatus())
+                .category(productDTO.getCategory())
+                .build();
+
+        return product;
     }
 
     @Override

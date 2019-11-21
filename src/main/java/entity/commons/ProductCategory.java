@@ -1,7 +1,6 @@
 package entity.commons;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 
@@ -9,7 +8,8 @@ public enum ProductCategory {
 
     CHEMISTRY("CHE"),
     GROCERY("GRO"),
-    ALCOHOL("ALC");
+    ALCOHOL("ALC"),
+    UNDEFINED("UDF");
 
     private String shortName;
     private static List<String> shortNames;

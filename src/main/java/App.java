@@ -23,7 +23,7 @@ public class App {
                     ClientMenuViewService.serveClientChoice();
                     break;
                 case 2:
-                    StuffMenuViewService.printStuffMenu();
+//                    StuffMenuViewService.printStuffMenu();
                     StuffMenuLogicService.serveStuffChoice();
                     break;
                 case 3:
