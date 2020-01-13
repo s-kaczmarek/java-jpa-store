@@ -6,9 +6,10 @@ public class StuffMenuViewService {
         System.out.println("");
         System.out.println(MenuViewService.generateMenuHeader("Stuff Menu"));
         System.out.println("1. Display all products");
-        System.out.println("2. Add new product");
-        System.out.println("3. Change price of product");
-        System.out.println("4. Delete product");
-        System.out.println("5. Main menu");
+        System.out.println("2. Display all sales");
+        System.out.println("3. Add new product");
+        System.out.println("4. Change price of product");
+        System.out.println("5. Delete product");
+        System.out.println("6. Main menu");
     }
 }

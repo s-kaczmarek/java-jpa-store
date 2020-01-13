@@ -36,7 +36,7 @@ public class ProductFacadeService {
     }
 
     public List<Product> readAllProducts(){
-        return this.productRepository.readAllObjects();
+        return this.productRepository.readAllSales();
     }
 
     public List<Product> readAllActiveProducts(){

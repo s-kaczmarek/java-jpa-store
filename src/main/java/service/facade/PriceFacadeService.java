@@ -26,7 +26,7 @@ public class PriceFacadeService {
     }
 
     public List<Price> readAllObjects(){
-        return this.priceRepository.readAllObjects();
+        return this.priceRepository.readAllSales();
     }
 
     public Price readObjectById(Long id){

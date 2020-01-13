@@ -16,7 +16,6 @@ public class HibernateUtils {
     static {
         entityManagerFactory = Persistence.createEntityManagerFactory("pu");
         entityManager = entityManagerFactory.createEntityManager();
-        System.out.println("URUCHOMIONO BLOK STATIC");
     }
 
     public static void persistObject(Object object){

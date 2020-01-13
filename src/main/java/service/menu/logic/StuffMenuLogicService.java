@@ -43,31 +43,48 @@ public class StuffMenuLogicService {
                     displayAllProducts();
                     break;
                 case 2:
+                    displayAllSales();
+                    break;
+                case 3:
                     try{
                         addNewProduct();
                     }catch(WrongRangeException | ProductNotCompleteException e){
                         System.out.println("Unable to add product due to error: " + e.getMessage());
                     }
                     break;
-                case 3:
+                case 4:
                     try{
                         changeProductPrice();
                     }catch(WrongRangeException | DataInconsistencyException e){
                         System.out.println(e.getMessage());
                     }
                     break;
-                case 4:
+                case 5:
                     try{
                         deleteProduct();
                     }catch(WrongRangeException e){
                         System.out.println("There is no product with given index" + e.getMessage());
                     }
                     break;
-                case 5:
+                case 6:
                     isInsideStuffMenu = false;
                     break;
             }
         }while(isInsideStuffMenu);
+    }
+
+    private static void displayAllSales() {
+        Scanner sc = ScannerUtils.getScanner();
+        MenuViewService.displayAllSales();
+        MenuViewService.displayPreviousMenuChoice();
+        boolean isUserChoiceIncorrect = true;
+        String userChoice;
+        do{
+            userChoice = sc.nextLine();
+            if(userChoice.equalsIgnoreCase("X")){
+                isUserChoiceIncorrect = false;
+            }
+        }while(isUserChoiceIncorrect);
     }
 
     private static void displayAllProducts() {

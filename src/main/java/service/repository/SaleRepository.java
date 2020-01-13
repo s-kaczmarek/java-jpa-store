@@ -21,7 +21,7 @@ public class SaleRepository extends AbstractRepository<Long, Sale>{
     }
 
     @Override
-    public List<Sale> readAllObjects() {
+    public List<Sale> readAllSales() {
         String query = String.format("SELECT e FROM Sale e");
         return HibernateUtils.entityManager.createQuery(query).getResultList();
     }

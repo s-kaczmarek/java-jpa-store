@@ -2,31 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89103004-4876-473c-a785-10193a712e43" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/dto/CartDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/enums/CartChoice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/exception/DataInconsistencyException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/menu/logic/ClientMenuLogicService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Price.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Price.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entity/Sale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Sale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/facade/PriceFacadeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/facade/PriceFacadeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/facade/ProductFacadeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/facade/ProductFacadeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/facade/SaleFacadeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/facade/SaleFacadeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/menu/logic/ClientMenuLogicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/menu/logic/ClientMenuLogicService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/menu/logic/StuffMenuLogicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/menu/logic/StuffMenuLogicService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/menu/view/ClientMenuViewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/menu/view/ClientMenuViewService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/menu/view/MenuViewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/menu/view/MenuViewService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/menu/view/StuffMenuViewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/menu/view/StuffMenuViewService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/repository/AbstractRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/repository/AbstractRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/repository/PriceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/repository/PriceRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/repository/SaleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/repository/SaleRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/HibernateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/HibernateUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utils/TestUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/TestUtils.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -236,28 +225,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/service/menu/logic/ClientMenuLogicService.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/service/menu/logic/ClientMenuLogicService.java</url>
-          <line>74</line>
+          <line>73</line>
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/service/menu/logic/ClientMenuLogicService.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/service/menu/logic/ClientMenuLogicService.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/entity/dto/CartDTO.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

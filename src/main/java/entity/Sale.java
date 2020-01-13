@@ -3,7 +3,6 @@ package entity;
 import entity.dto.CartDTO;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -42,6 +41,15 @@ public class Sale {
 
             return sale;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Sale{" +
+                "id=" + id +
+                ", salesTime=" + salesTime +
+                ", products=" + products +
+                '}';
     }
 
     public Long getId() {

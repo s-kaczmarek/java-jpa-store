@@ -33,7 +33,7 @@ public abstract class AbstractRepository<T, U> {
         HibernateUtils.persistObject(object);
     }
 
-    public abstract List<U> readAllObjects();
+    public abstract List<U> readAllSales();
 
     public Object readObjectById(T id){
         Class<U> entityClass;

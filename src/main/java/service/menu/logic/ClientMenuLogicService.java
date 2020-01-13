@@ -61,7 +61,6 @@ public class ClientMenuLogicService {
                         }catch(WrongRangeException e){
                             System.out.println("Wrong choice, try again");
                         }
-//                  TODO - dodac zatwierdzenie sale.
                     } while(userCartChoice.equals(CartChoice.ADD_ANOTHER_PRODUCT));
                     break;
                 case 2: // exit
@@ -74,12 +73,8 @@ public class ClientMenuLogicService {
     private static CartChoice serveCartChoice() throws WrongRangeException {
         Scanner sc = ScannerUtils.getScanner();
         ClientMenuViewService.printCartChoice();
-        System.out.println("Jesteśmy przed ");
         int userChoice = sc.nextInt();
         sc.nextLine();
-//        String aaa = sc.nextLine();
-//        int userChoice = Integer.parseInt(aaa);
-        System.out.println("Jesteśmy po!");
         switch(userChoice){
             case 1: return CartChoice.ADD_ANOTHER_PRODUCT;
             case 2: return CartChoice.BUY;
@@ -135,7 +130,7 @@ public class ClientMenuLogicService {
         try{
             wallet = RandomService.generateIntBetween(50,200);
         }catch(Exception e){
-            // Jestli wystąpi wyjątek to przypisujemy na sztywno 100
+            // hardcode 100 if exception
             wallet = 100;
         }
         return wallet;

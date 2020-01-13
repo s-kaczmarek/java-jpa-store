@@ -1,6 +1,5 @@
 package service.facade;
 
-import entity.Price;
 import entity.Sale;
 import service.repository.SaleRepository;
 
@@ -26,8 +25,8 @@ public class SaleFacadeService {
         this.saleRepository.persistObject(sale);
     }
 
-    public List<Sale> readAllObjects(){
-        return this.saleRepository.readAllObjects();
+    public List<Sale> readAllSales(){
+        return this.saleRepository.readAllSales();
     }
 
     public Sale readObjectById(Long id){

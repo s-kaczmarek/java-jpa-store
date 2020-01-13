@@ -21,7 +21,7 @@ public class PriceRepository extends AbstractRepository<Long, Price> {
     }
 
     @Override
-    public List<Price> readAllObjects() {
+    public List<Price> readAllSales() {
         String query = String.format("SELECT e FROM Price e");
         return HibernateUtils.entityManager.createQuery(query).getResultList();
     }
