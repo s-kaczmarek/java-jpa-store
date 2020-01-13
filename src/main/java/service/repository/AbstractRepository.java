@@ -42,11 +42,10 @@ public abstract class AbstractRepository<T, U> {
     }
 
     public void updateObject(Object object){
-        HibernateUtils.entityManager.merge(object);
+        HibernateUtils.updateObject(object);
     }
 
     public void deleteObject(Object object){
-        HibernateUtils.entityManager.remove(object);
+        HibernateUtils.deleteObject(object);
     }
-
 }

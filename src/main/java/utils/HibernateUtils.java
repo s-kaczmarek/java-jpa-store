@@ -23,6 +23,7 @@ public class HibernateUtils {
         entityManager.getTransaction().begin();
         entityManager.persist(object);
         entityManager.getTransaction().commit();
+        entityManager.clear();
     }
 
     public static List readAllObjects(String entityName){
@@ -37,11 +38,15 @@ public class HibernateUtils {
     }
 
     public static void updateObject(Object object){
+        entityManager.getTransaction().begin();
         entityManager.merge(object);
+        entityManager.getTransaction().commit();
     }
 
     public static void deleteObject(Object object){
+        entityManager.getTransaction().begin();
         entityManager.remove(object);
+        entityManager.getTransaction().commit();
     }
 
     public static void closeSession(){

@@ -1,11 +1,15 @@
 package service.menu.logic;
 
+import entity.Price;
 import entity.Product;
 import entity.commons.ProductCategory;
 import entity.commons.ProductStatus;
 import entity.dto.ProductDTO;
+import service.exception.DataInconsistencyException;
 import service.exception.ProductNotCompleteException;
 import service.exception.WrongRangeException;
+import service.facade.PriceFacadeService;
+import service.facade.ProductFacadeService;
 import service.menu.view.MenuViewService;
 import service.menu.view.StuffMenuViewService;
 import service.repository.ProductRepository;
@@ -15,6 +19,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class StuffMenuLogicService {
+
+    public static ProductFacadeService productFacadeService;
+    public static PriceFacadeService priceFacadeService;
+
+    static{
+        productFacadeService = ProductFacadeService.getInstance();
+        priceFacadeService = PriceFacadeService.getInstance();
+    }
 
     public static void serveStuffChoice(){
         Scanner sc = ScannerUtils.getScanner();
@@ -38,8 +50,18 @@ public class StuffMenuLogicService {
                     }
                     break;
                 case 3:
+                    try{
+                        changeProductPrice();
+                    }catch(WrongRangeException | DataInconsistencyException e){
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 4:
+                    try{
+                        deleteProduct();
+                    }catch(WrongRangeException e){
+                        System.out.println("There is no product with given index" + e.getMessage());
+                    }
                     break;
                 case 5:
                     isInsideStuffMenu = false;
@@ -48,18 +70,15 @@ public class StuffMenuLogicService {
         }while(isInsideStuffMenu);
     }
 
-    public static void displayAllProducts() {
+    private static void displayAllProducts() {
         Scanner sc = ScannerUtils.getScanner();
-        List<Product> products = MenuViewService.productFacadeService.readAllProducts();
-        for(int i = 0; i < products.size(); i++){
-            System.out.println(i + ". " + products.get(i));
-        }
+        MenuViewService.displayAllProducts();
         MenuViewService.displayPreviousMenuChoice();
         boolean isUserChoiceIncorrect = true;
         String userChoice;
         do{
             userChoice = sc.nextLine();
-            if(userChoice.equals("X")){
+            if(userChoice.equalsIgnoreCase("X")){
                 isUserChoiceIncorrect = false;
             }
         }while(isUserChoiceIncorrect);
@@ -152,5 +171,70 @@ public class StuffMenuLogicService {
         }else{
             System.out.println("New product rejected by user!");
         }
+    }
+
+    private static void changeProductPrice() throws WrongRangeException, DataInconsistencyException {
+        Scanner sc = ScannerUtils.getScanner();
+
+        List<Product> products = productFacadeService.readAllProducts();
+        MenuViewService.displayAllProducts();
+
+        System.out.println("\nChoose product by order number: ");
+        int selectedProductIndex = sc.nextInt();
+
+        if(selectedProductIndex <= products.size()){
+            Product selectedProductObject = products.get(selectedProductIndex-1);
+
+            List<Price> prices = selectedProductObject.getPrices();
+
+            System.out.println("\n" + selectedProductObject.getLabel() + "prices :");
+
+            for(Price p : prices){
+                System.out.println(p.toString());
+            }
+
+            System.out.println("\nType new price: ");
+            Double newPriceValue = sc.nextDouble();
+
+            Price newPriceObject = new Price.Builder().price(newPriceValue).build();
+            selectedProductObject.attachPrice(newPriceObject);
+            //prices.add(newPriceObject);
+
+            priceFacadeService.persistObject(newPriceObject);
+            productFacadeService.updateObject(selectedProductObject);
+
+        }else{
+            throw new WrongRangeException("Chosen index is out of range!");
+        }
+    }
+
+    private static void deleteProduct() throws WrongRangeException {
+        System.out.println("Chose index of product to delete \n");
+
+        Scanner sc = ScannerUtils.getScanner();
+
+        List<Product> products = productFacadeService.readAllProducts();
+        MenuViewService.displayAllProducts();
+
+        System.out.println("index: ");
+        int choosenIndex = sc.nextInt();
+
+        if(choosenIndex <= products.size()){
+            Product productToDelete = products.get(choosenIndex - 1);
+            productFacadeService.deleteObject(productToDelete);
+        }else{
+            throw new WrongRangeException("Chosen index is out of range");
+        }
+
+        MenuViewService.displayPreviousMenuChoice();
+        boolean isUserChoiceIncorrect = true;
+        String userChoice;
+        do{
+            userChoice = sc.nextLine();
+            if(userChoice.equalsIgnoreCase("X")){
+                isUserChoiceIncorrect = false;
+            }
+        }while(isUserChoiceIncorrect);
+
     }
 }

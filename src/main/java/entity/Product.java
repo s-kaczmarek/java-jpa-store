@@ -5,6 +5,7 @@ import entity.commons.ProductCategory;
 import entity.commons.ProductStatus;
 import entity.dto.ProductDTO;
 import service.IdentifierService;
+import service.exception.DataInconsistencyException;
 import service.exception.ProductNotCompleteException;
 import service.exception.WrongRangeException;
 import service.repository.PriceRepository;
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="products")
@@ -53,11 +55,6 @@ public class Product {
 
         public Builder label(String label){
             this.label = label;
-            return this;
-        }
-
-        public Builder launchDate(LocalDate launchDate){
-            this.launchDate = launchDate;
             return this;
         }
 
@@ -110,8 +107,8 @@ public class Product {
         if(productDTO.isNotValid()){
             throw new ProductNotCompleteException("One or more of the fields is empty!");
         }
-        Price price = new Price();
-        price.setPrice(productDTO.getPrice());
+        Price price = new Price.Builder().price(productDTO.getPrice()).build();
+//        price.setPrice(productDTO.getPrice());
         priceRepository.persistObject(price);
         List<Price> prices = new ArrayList<>();
         prices.add(price);
@@ -124,6 +121,20 @@ public class Product {
                 .build();
 
         return product;
+    }
+
+    public void attachPrice(Price price) throws DataInconsistencyException {
+        List<Price> prices = getPrices();
+        List<Price> pricesWithoutEndDate = prices.stream().filter(r -> r.getEndDate() == null).collect(Collectors.toList());
+        if(pricesWithoutEndDate.size() > 1){
+            throw new DataInconsistencyException("More that one end dates are null");
+        }else if(pricesWithoutEndDate.isEmpty()){
+            throw new DataInconsistencyException("List of prices is empty");
+        }else{
+            Price priceWithoutEndDate = pricesWithoutEndDate.get(0);
+            priceWithoutEndDate.setEndDate(LocalDate.now());
+            prices.add(price);
+        }
     }
 
     @Override

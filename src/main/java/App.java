@@ -1,7 +1,8 @@
+import service.exception.WrongRangeException;
+import service.menu.logic.ClientMenuLogicService;
 import service.menu.logic.StuffMenuLogicService;
 import service.menu.view.ClientMenuViewService;
 import service.menu.view.MainMenuViewService;
-import service.menu.view.StuffMenuViewService;
 import utils.ScannerUtils;
 
 import java.util.Scanner;
@@ -19,11 +20,13 @@ public class App {
 
             switch(userChoice){
                 case 1:
-                    ClientMenuViewService.printClientMenu();
-                    ClientMenuViewService.serveClientChoice();
+                    try{
+                        ClientMenuLogicService.serveClientChoice();
+                    }catch(Exception e){
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 2:
-//                    StuffMenuViewService.printStuffMenu();
                     StuffMenuLogicService.serveStuffChoice();
                     break;
                 case 3:

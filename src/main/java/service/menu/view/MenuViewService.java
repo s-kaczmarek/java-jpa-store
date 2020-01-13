@@ -1,6 +1,9 @@
 package service.menu.view;
 
+import entity.Product;
 import service.facade.ProductFacadeService;
+
+import java.util.List;
 
 public class MenuViewService {
 
@@ -23,5 +26,12 @@ public class MenuViewService {
 
     public static void displayPreviousMenuChoice(){
         System.out.println("X. Previous Menu");
+    }
+
+    public static void displayAllProducts(){
+        List<Product> products = productFacadeService.readAllProducts();
+        for(int i = 0; i < products.size(); i++){
+            System.out.println(i+1 + ". " + products.get(i));
+        }
     }
 }

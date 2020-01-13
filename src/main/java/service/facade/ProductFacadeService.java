@@ -39,6 +39,10 @@ public class ProductFacadeService {
         return this.productRepository.readAllObjects();
     }
 
+    public List<Product> readAllActiveProducts(){
+        return this.productRepository.readAllActiveObjects();
+    }
+
     public Product readObjectById(Long id){
         return (Product) this.productRepository.readObjectById(id);
     }

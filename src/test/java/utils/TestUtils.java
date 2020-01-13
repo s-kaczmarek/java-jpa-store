@@ -28,7 +28,7 @@ public class TestUtils {
         return new Price.Builder()
                 .price(10 + r.nextDouble() % 90) // 10 + ...  % 90 zwróci resztę z dzielenia przez 90, czyli liczby z przedziały 10 - 99,999999
              // .beginDate(LocalDate.of(2019,1 + r.nextInt() % 12, 1 + r.nextInt() % 28))
-                .beginDate(LocalDate.now().minusDays(1 + r.nextInt() % 365))
+//                .beginDate(LocalDate.now().minusDays(1 + r.nextInt() % 365))
                 .build();
     }
 
@@ -42,7 +42,7 @@ public class TestUtils {
         return new Product.Builder()
                 .category(ProductCategory.GROCERY)
                 .label("Coca-Cola")
-                .launchDate(LocalDate.of(2019,8,8))
+//                .launchDate(LocalDate.of(2019,8,8))
                 .prices(prices)
                 .status(ProductStatus.ACTIVE)
                 .build();
@@ -56,7 +56,7 @@ public class TestUtils {
         );
 
         return new Sale.Builder()
-                .salesTime(LocalDateTime.of(2018,5,11,12,34,12))
+//                .salesTime(LocalDateTime.of(2018,5,11,12,34,12))
                 .products(products)
                 .build();
     }

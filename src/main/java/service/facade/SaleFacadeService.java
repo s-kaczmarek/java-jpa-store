@@ -22,8 +22,8 @@ public class SaleFacadeService {
         this.saleRepository = SaleRepository.getInstance();
     }
 
-    public void persistObject(Price price){
-        this.saleRepository.persistObject(price);
+    public void persistObject(Sale sale){
+        this.saleRepository.persistObject(sale);
     }
 
     public List<Sale> readAllObjects(){

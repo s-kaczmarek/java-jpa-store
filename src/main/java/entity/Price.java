@@ -20,37 +20,25 @@ public class Price {
 
     public static final class Builder {
 
-        private Product product;
         private Double price;
         private LocalDate beginDate;
-        private LocalDate endDate;
-
-        public Builder product(Product product){
-            this.product = product;
-            return this;
-        }
+//        private LocalDate endDate;
 
         public Builder price(Double price){
             this.price = price;
             return this;
         }
 
-        public Builder beginDate(LocalDate begin_date){
-            this.beginDate = begin_date;
-            return this;
-        }
-
-        public Builder endDate(LocalDate end_date){
-            this.endDate = end_date;
-            return  this;
-        }
+//        public Builder endDate(LocalDate end_date){
+//            this.endDate = end_date;
+//            return  this;
+//        }
 
         public Price build(){
             Price price = new Price();
-            price.setProduct(this.product);
             price.setPrice(this.price);
-            price.setBeginDate(this.beginDate);
-            price.setEndDate(this.endDate);
+            price.setBeginDate(LocalDate.now());
+//            price.setEndDate(this.endDate);
 
             return price;
         }
@@ -91,5 +79,14 @@ public class Price {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Price{" +
+                "price= " + price +
+                " beginDate= " + beginDate +
+                " endDate= " + endDate +
+                '}';
     }
 }

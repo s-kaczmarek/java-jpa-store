@@ -1,5 +1,7 @@
 package entity;
 
+import entity.dto.CartDTO;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,15 +20,15 @@ public class Sale {
     @ManyToMany//(mappedBy="sales") // Jeden rachunek może zawierać wiele produktów, a jeden produkt, może występowac na wielu rachunkach // Jeden rachunek może zawierać wiele produktów, a jeden produkt, może występowac na wielu rachunkach
     private List<Product> products;
 
+    public static Sale mapFromDTO(CartDTO cartDTO) {
+        return new Builder()
+                .products(cartDTO.getProducts())
+                .build();
+    }
+
     public static final class Builder {
 
-        private LocalDateTime salesTime;
         private List<Product> products;
-
-        public Builder salesTime(LocalDateTime salesTime){
-            this.salesTime = salesTime;
-            return this;
-        }
 
         public Builder products(List<Product> products){
             this.products = products;
@@ -35,7 +37,7 @@ public class Sale {
 
         public Sale build(){
             Sale sale = new Sale();
-            sale.setSalesTime(this.salesTime);
+            sale.setSalesTime(LocalDateTime.now());
             sale.setProducts(this.products);
 
             return sale;
