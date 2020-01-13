@@ -215,7 +215,6 @@ public class StuffMenuLogicService {
 
             Price newPriceObject = new Price.Builder().price(newPriceValue).build();
             selectedProductObject.attachPrice(newPriceObject);
-            //prices.add(newPriceObject);
 
             priceFacadeService.persistObject(newPriceObject);
             productFacadeService.updateObject(selectedProductObject);
