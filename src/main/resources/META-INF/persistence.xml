@@ -10,7 +10,6 @@
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLiteDialect" />
             <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />
-        <!--<property name="javax.persistence.jdbc.url" value="jdbc:sqlite::memory:" />-->
             <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:database.db" />
             <property name="javax.persistence.jdbc.user" value="" />
             <property name="javax.persistence.jdbc.password" value="" />
